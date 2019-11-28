@@ -278,7 +278,7 @@ def gg_screen():
     gg = True
     screen.fill(WHITE)
     pygame.font.init()
-    game_over = pygame.font.Font("./techkr/test.ttf", 40).render('თამაში დასრულდაA', True, GREY)
+    game_over = pygame.font.Font("./techkr/test.ttf", 40).render('თამაში დასრულდა', True, GREY)
     str_score = pygame.font.Font("./techkr/test.ttf", 50).render('ქულა: %s' % score, True, GREY)
     term = pygame.font.Font("./techkr/test.ttf", 25).render('გასვლა', True, WHITE)
     back = pygame.font.Font("./techkr/test.ttf", 19).render('დაბრუნება', True, WHITE)
