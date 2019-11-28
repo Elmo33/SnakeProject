@@ -3,13 +3,15 @@ import pygame
 from pygame.locals import *
 import sys
 
-
 HEIGHT = 20
 WIDTH = 20
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
+GREY = (34, 34, 34)
+RED = (210, 0, 0)
+
 
 FOOD = 0
 UNDEF = int(1E3)
@@ -22,7 +24,8 @@ DOWN = WIDTH
 
 DIRC_LIST = [LEFT, UP, RIGHT, DOWN]
 
-#ამ ფუნქციით ვქმნით 'Snake'-ის ფანჯარას და ვუთითებთ თამაშის ძირითად კომპონენტებს.
+
+# ამ ფუნქციით ვქმნით 'Snake'-ის ფანჯარას და ვუთითებთ თამაშის ძირითად კომპონენტებს.
 def reset_all():
     global snake, board, snake_size, _snake, _board, _snake_size, food, score
     board = [0] * HEIGHT * WIDTH  # use one dimensional list to represent 2 dimensional board
@@ -36,10 +39,9 @@ def reset_all():
     _snake_size = 1
 
     food = 7 * WIDTH + 8
-    
-   
 
-#ამ ფუნქციით ვქმნით 'Snake'-ის სათამაშო დაფას 
+
+# ამ ფუნქციით ვქმნით 'Snake'-ის სათამაშო დაფას
 def init_board(__snake, __size, __board):
     for i in range(HEIGHT * WIDTH):
         if i == food:
@@ -49,8 +51,8 @@ def init_board(__snake, __size, __board):
         else:
             __board[i] = SNAKE
 
-    
-#ეს ფუნქცია განსაზღვრავს თამაშში გველის მოძრაობებს(მარცხნივ, მარჯვნივ, ზემოთ, ქვემოთ)
+
+# ეს ფუნქცია განსაზღვრავს თამაშში გველის მოძრაობებს(მარცხნივ, მარჯვნივ, ზემოთ, ქვემოთ)
 def can_move(pos, dirc):
     if dirc == UP and pos / WIDTH > 0:
         return True
@@ -62,9 +64,7 @@ def can_move(pos, dirc):
         return True
     return False
 
-     
-    
-      
+
 def find_food_path_bfs(__food, __snake, __board):
     found = False
     q = [__food]  # not using Queue() because it is slower
@@ -104,7 +104,8 @@ def mv_body(__snake, __snake_size):
     for i in range(__snake_size, 0, -1):
         __snake[i] = __snake[i - 1]
 
-#ეს ფუნქცია აგენერირებს გველის საჭმელს არეულად(random)
+
+# ეს ფუნქცია აგენერირებს გველის საჭმელს არეულად(random)
 def gen_food():
     global food, snake_size
     a = False
@@ -113,7 +114,7 @@ def gen_food():
         h = randint(1, HEIGHT - 2)
         food = h * WIDTH + w
         a = not (food in snake[:snake_size])
- 
+
 
 def r_move(__mv):
     global snake, board, snake_size, score
@@ -213,15 +214,15 @@ def run():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-        screen.fill(BLACK)
-        pygame.draw.rect(screen, GREEN, (int(food / WIDTH) * 24, int(food % WIDTH) * 24, 24, 24))
+        screen.fill(WHITE)
+        pygame.draw.rect(screen, RED, (int(food / WIDTH) * 24, int(food % WIDTH) * 24, 24, 24))
         for i in range(HEIGHT * WIDTH):
             if board[i] == SNAKE:
-                pygame.draw.rect(screen, WHITE, (int(i / WIDTH) * 24, int(i % WIDTH) * 24, 24, 24))
+                pygame.draw.rect(screen, GREY, (int(i / WIDTH) * 24, int(i % WIDTH) * 24, 24, 24))
         init_board(snake, snake_size, board)
 
         # ამ ფუნქციის ლოგიკა არის რომ იპოვოს დისტანცია გველიდან მის საკვებამდე
-        # 
+        #
         #
         # თუ გამოდის:
         #     ამოწმებს შეუძლია თუ არა გველს მიწვდეს მის კუდს
@@ -244,18 +245,19 @@ def run():
         pygame.display.update()
         pygame.time.Clock().tick(20)
 
- #ამ ფუნქციით ვქმნით თამაშის დაწების ეკრანს(ფანჯარას) რომელიც გამოდის პროგრამის გაშვებისას. ამ ფანჯარაზე გამოსახულია თამაშის 
-    #სათაური და ჩართვის(Play) ღილაკი
+
+# ამ ფუნქციით ვქმნით თამაშის დაწების ეკრანს(ფანჯარას) რომელიც გამოდის პროგრამის გაშვებისას. ამ ფანჯარაზე გამოსახულია თამაშის
+# სათაური და ჩართვის(Play) ღილაკი
 def start_screen():
     start = True
-    screen.fill(BLACK)
+    screen.fill(WHITE)
     pygame.font.init()
-    menu = pygame.font.Font("./techkr/test2.ttf", 170).render('Snake', True, WHITE)
-    ai = pygame.font.Font("./techkr/test.ttf", 40).render('ხელოვნური ინტელექტი', True, WHITE)
-    play = pygame.font.Font("./techkr/test.ttf", 25).render('თამაში', True, BLACK)
+    menu = pygame.font.Font("./geopixel.ttf", 170).render('Snake', True, GREY)
+    ai = pygame.font.Font("./geopixel.ttf", 40).render('ხელოვნური ინტელექტი', True, GREY)
+    play = pygame.font.Font("./geopixel.ttf", 25).render('თამაში', True, WHITE)
     screen.blit(menu, (150, 10))
     screen.blit(ai, (15, 200))
-    play_button = pygame.draw.rect(screen, WHITE, (187, 300, 100, 50))
+    play_button = pygame.draw.rect(screen, GREY, (187, 300, 100, 50))
     screen.blit(play, (194, 310))
 
     while start:
@@ -268,26 +270,24 @@ def start_screen():
         pygame.display.update()
     pygame.quit()
     sys.exit()
-   
 
 
- #ამ ფუნქციით ვქმნით თამაშის დასასრულის ფანჯარას. ამ ფანჯარაზე გამოსახულია 'თამაში დასრულებულია'(Game Over) და დაგროვებული
- #ქულების რაოდენობა.
+# ამ ფუნქციით ვქმნით თამაშის დასასრულის ფანჯარას. ამ ფანჯარაზე გამოსახულია 'თამაში დასრულებულია'(Game Over) და დაგროვებული
+# ქულების რაოდენობა.
 def gg_screen():
     gg = True
-    screen.fill(BLACK)
+    screen.fill(WHITE)
     pygame.font.init()
-    game_over = pygame.font.Font("./techkr/test.ttf", 40).render('თამაში დასრულდა', True, WHITE)
-    str_score = pygame.font.Font("./techkr/test.ttf", 50).render('ქულა: %s' % score, True, WHITE)
-    term = pygame.font.Font("./techkr/test.ttf", 25).render('გასვლა', True, BLACK)
-    back = pygame.font.Font("./techkr/test.ttf", 19).render('დაბრუნება', True, BLACK)
+    game_over = pygame.font.Font("./techkr/test.ttf", 40).render('თამაში დასრულდა', True, GREY)
+    str_score = pygame.font.Font("./techkr/test.ttf", 50).render('ქულა: %s' % score, True, GREY)
+    term = pygame.font.Font("./techkr/test.ttf", 25).render('გასვლა', True, WHITE)
+    back = pygame.font.Font("./techkr/test.ttf", 19).render('დაბრუნება', True, WHITE)
     screen.blit(game_over, (60, 30))
     screen.blit(str_score, (55, 180))
-    exit_button = pygame.draw.rect(screen, WHITE, (90, 300, 100, 50))
-    back_button = pygame.draw.rect(screen, WHITE, (300, 300, 100, 50))
+    exit_button = pygame.draw.rect(screen, GREY, (90, 300, 100, 50))
+    back_button = pygame.draw.rect(screen, GREY, (300, 300, 100, 50))
     screen.blit(term, (95, 310))
     screen.blit(back, (300, 315))
-    
 
     while gg:
         for event in pygame.event.get():
@@ -303,7 +303,7 @@ def gg_screen():
     sys.exit()
 
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     pygame.init()
     pygame.display.set_caption("Snake Artificial Intelligence")
     screen = pygame.display.set_mode((480, 480))
