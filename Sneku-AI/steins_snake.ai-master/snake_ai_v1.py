@@ -250,9 +250,9 @@ def start_screen():
     start = True
     screen.fill(BLACK)
     pygame.font.init()
-    menu = pygame.font.Font("./techkr/TECHKR__.TTF", 160).render('Steins;Snake', True, WHITE)
-    ai = pygame.font.Font("./techkr/TECHKR__.TTF", 140).render('AI', True, WHITE)
-    play = pygame.font.Font("./techkr/TECHKR__.TTF", 80).render('Play', True, BLACK)
+    menu = pygame.font.Font("./techkr/test.ttf", 160).render('Snake', True, WHITE)
+    ai = pygame.font.Font("./techkr/test.ttf", 40).render('ხელოვნური ინტელექტი', True, WHITE)
+    play = pygame.font.Font("./techkr/test.ttf", 50).render('თამაში', True, BLACK)
     screen.blit(menu, (62, 30))
     screen.blit(ai, (215, 110))
     play_button = pygame.draw.rect(screen, WHITE, (187, 300, 100, 50))
@@ -277,10 +277,10 @@ def gg_screen():
     gg = True
     screen.fill(BLACK)
     pygame.font.init()
-    game_over = pygame.font.Font("./techkr/TECHKR__.TTF", 190).render('Game Over', True, WHITE)
-    str_score = pygame.font.Font("./techkr/TECHKR__.TTF", 80).render('Score: %s' % score, True, WHITE)
-    term = pygame.font.Font("./techkr/TECHKR__.TTF", 80).render('Exit', True, BLACK)
-    back = pygame.font.Font("./techkr/TECHKR__.TTF", 35).render('Back to Menu', True, BLACK)
+    game_over = pygame.font.Font("./techkr/test.ttf", 190).render('თამაში დასრულდა', True, WHITE)
+    str_score = pygame.font.Font("./techkr/test.ttf", 80).render('ქულა: %s' % score, True, WHITE)
+    term = pygame.font.Font("./techkr/test.ttf", 80).render('გასვლა', True, BLACK)
+    back = pygame.font.Font("./techkr/test.ttf", 35).render('დაბრუნება მენიუში', True, BLACK)
     screen.blit(game_over, (60, 30))
     screen.blit(str_score, (190, 180))
     exit_button = pygame.draw.rect(screen, WHITE, (90, 300, 100, 50))
@@ -305,7 +305,7 @@ def gg_screen():
 
 if __name__ == '__main__':
     pygame.init()
-    pygame.display.set_caption("Steins;Snake ~ El psy congroo.")
+    pygame.display.set_caption("Snake  ხელოვნური ინტელექტი.")
     screen = pygame.display.set_mode((480, 480))
     while True:
         start_screen()
