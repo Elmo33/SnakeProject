@@ -250,13 +250,13 @@ def start_screen():
     start = True
     screen.fill(BLACK)
     pygame.font.init()
-    menu = pygame.font.Font("./techkr/test.ttf", 160).render('Snake', True, WHITE)
+    menu = pygame.font.Font("./techkr/test2.ttf", 170).render('Snake', True, WHITE)
     ai = pygame.font.Font("./techkr/test.ttf", 40).render('ხელოვნური ინტელექტი', True, WHITE)
-    play = pygame.font.Font("./techkr/test.ttf", 50).render('თამაში', True, BLACK)
-    screen.blit(menu, (62, 30))
-    screen.blit(ai, (215, 110))
+    play = pygame.font.Font("./techkr/test.ttf", 25).render('თამაში', True, BLACK)
+    screen.blit(menu, (150, 10))
+    screen.blit(ai, (15, 200))
     play_button = pygame.draw.rect(screen, WHITE, (187, 300, 100, 50))
-    screen.blit(play, (207, 270))
+    screen.blit(play, (194, 310))
 
     while start:
         for event in pygame.event.get():
@@ -277,16 +277,16 @@ def gg_screen():
     gg = True
     screen.fill(BLACK)
     pygame.font.init()
-    game_over = pygame.font.Font("./techkr/test.ttf", 190).render('თამაში დასრულდა', True, WHITE)
-    str_score = pygame.font.Font("./techkr/test.ttf", 80).render('ქულა: %s' % score, True, WHITE)
-    term = pygame.font.Font("./techkr/test.ttf", 80).render('გასვლა', True, BLACK)
-    back = pygame.font.Font("./techkr/test.ttf", 35).render('დაბრუნება მენიუში', True, BLACK)
+    game_over = pygame.font.Font("./techkr/test.ttf", 40).render('თამაში დასრულდა', True, WHITE)
+    str_score = pygame.font.Font("./techkr/test.ttf", 50).render('ქულა: %s' % score, True, WHITE)
+    term = pygame.font.Font("./techkr/test.ttf", 25).render('გასვლა', True, BLACK)
+    back = pygame.font.Font("./techkr/test.ttf", 19).render('დაბრუნება', True, BLACK)
     screen.blit(game_over, (60, 30))
-    screen.blit(str_score, (190, 180))
+    screen.blit(str_score, (55, 180))
     exit_button = pygame.draw.rect(screen, WHITE, (90, 300, 100, 50))
     back_button = pygame.draw.rect(screen, WHITE, (300, 300, 100, 50))
-    screen.blit(term, (114, 270))
-    screen.blit(back, (310, 300))
+    screen.blit(term, (95, 310))
+    screen.blit(back, (300, 315))
     
 
     while gg:
@@ -305,7 +305,7 @@ def gg_screen():
 
 if __name__ == '__main__':
     pygame.init()
-    pygame.display.set_caption("Snake  ხელოვნური ინტელექტი.")
+    pygame.display.set_caption("Snake Artificial Intelligence")
     screen = pygame.display.set_mode((480, 480))
     while True:
         start_screen()
