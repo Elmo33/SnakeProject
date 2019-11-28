@@ -252,9 +252,9 @@ def start_screen():
     start = True
     screen.fill(WHITE)
     pygame.font.init()
-    menu = pygame.font.Font("./geopixel.ttf", 170).render('Snake', True, GREY)
-    ai = pygame.font.Font("./geopixel.ttf", 40).render('ხელოვნური ინტელექტი', True, GREY)
-    play = pygame.font.Font("./geopixel.ttf", 25).render('თამაში', True, WHITE)
+    menu = pygame.font.Font("./techkr/test2.ttf", 170).render('Snake', True, GREY)
+    ai = pygame.font.Font("./techkr/test2.ttf", 40).render('ხელოვნური ინტელექტი', True, GREY)
+    play = pygame.font.Font("./techkr/test2.ttf", 25).render('თამაში', True, WHITE)
     screen.blit(menu, (150, 10))
     screen.blit(ai, (15, 200))
     play_button = pygame.draw.rect(screen, GREY, (187, 300, 100, 50))
@@ -310,4 +310,4 @@ if _name_ == '_main_':
     while True:
         start_screen()
         run()
-        gg_screen()
+gg_screen()
